@@ -18,7 +18,24 @@
  */
 int main() {
     int a;
+    char b;
+    char c[50];
+    double d;
+    float e;
 
-    printf("Value of number : %d\n", a);
+    printf("Size of int : %d bytes\n", sizeof(a));
+    printf("Size of char : %d bytes\n", sizeof(b));
+    printf("Size of string : %d bytes\n", sizeof(c));
+    printf("Size of double : %d bytes\n", sizeof(d));
+    printf("Size of float : %d bytes\n", sizeof(e));
+
+    // 1 byte has 8 bits
+    /**
+    Size of int : 4 bytes
+    Size of char : 1 bytes
+    Size of string : 50 bytes
+    Size of double : 8 bytes
+    Size of float : 4 bytes
+    */
     return 0;
 }
