@@ -3,7 +3,7 @@
  * Console Input - scanf -> any number of arguments  ("format specifier", ...)
  * Console output - printf -> any number of arguments ("format specifier", ...)
  */
-
+int *address_of_a_in_sum = NULL;
 /**
  * Memory -> (input value -> memory(variables))
  *        -> (output memory -> value(variables))
@@ -16,26 +16,40 @@
  * 
  * if we have to show some value to the user, then we already have the variable so we can directly show the value
  */
+
+void sum() {
+    int a = 5;
+    
+    printf("Sum Block: %d %d\n", a, &a);
+    address_of_a_in_sum = &a;
+}
+
+void sum2() {
+    double reclaim_memory = 786.090;
+    
+    printf("Sum2 Block: %lf %d\n", reclaim_memory, &reclaim_memory);
+}
 int main() {
-    int a;
-    char b;
-    char c[50];
-    double d;
-    float e;
+    int a = 10;
 
-    printf("Size of int : %d bytes\n", sizeof(a));
-    printf("Size of char : %d bytes\n", sizeof(b));
-    printf("Size of string : %d bytes\n", sizeof(c));
-    printf("Size of double : %d bytes\n", sizeof(d));
-    printf("Size of float : %d bytes\n", sizeof(e));
+    printf("Function Block: %d %d\n", a, &a);
 
-    // 1 byte has 8 bits
-    /**
-    Size of int : 4 bytes
-    Size of char : 1 bytes
-    Size of string : 50 bytes
-    Size of double : 8 bytes
-    Size of float : 4 bytes
-    */
+    //Block A
+    {
+        int a = 20;
+
+        {
+            printf("A inner block: %d %d\n", a, &a);
+        }
+
+        printf("A block: %d %d\n", a, &a);
+    }
+
+    printf("Outer Function block: %d %d\n", a, &a);
+
+    sum();
+    sum2();
+    printf("After sum ends: %d %d\n", *address_of_a_in_sum, address_of_a_in_sum);
+
     return 0;
 }
